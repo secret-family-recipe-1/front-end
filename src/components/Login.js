@@ -5,12 +5,12 @@ import * as yup from 'yup'
 
 const initialFormValues = {
     ///// TEXT INPUTS /////
-    name: '',
+    username: '',
     password: '',
 }
 
 const initialFormErrors = {
-    name: '',
+    username: '',
     password: '',
 }
 
@@ -37,10 +37,10 @@ const Login = () => {
     // ````````````````````Helpers````````````````````:
     const formSchema = yup.object().shape({
 
-        name: yup.string()
+        username: yup.string()
             .trim()
-            .min(4, 'Name has to be at least 4 characters long')
-            .required('Name is required field'),
+            .min(4, 'Username has to be at least 4 characters long')
+            .required('Username is required field'),
         password: yup.string()
             .trim()
             .min(5, 'Password has to be at least 5 characters long')
@@ -48,21 +48,21 @@ const Login = () => {
     })
 
 
-
+    // 'https://reqres.in/api/users'
     const postNewUser = newUser => {
         axios.post('https://reqres.in/api/users', newUser)
 
-          .then(response => {
-            // debugger
-            setUsers([response.data, ...users])
+            .then(response => {
+                // debugger
+                setUsers([response.data, ...users])
 
-          })
-          .catch(error => {
-            debugger
-          })
-          .finally(() => {
-            setFormValues(initialFormValues)
-          })
+            })
+            .catch(error => {
+                debugger
+            })
+            .finally(() => {
+                setFormValues(initialFormValues)
+            })
     }
 
 
@@ -98,7 +98,7 @@ const Login = () => {
         event.preventDefault()
 
         const newUser = {
-            name: formValues['name'].trim(),
+            username: formValues['username'].trim(),
             password: formValues['password'].trim(),
 
         }
@@ -117,53 +117,54 @@ const Login = () => {
 
     return (
         <>
-        <form onSubmit={onSubmit}>
-            <h2>Login:</h2>
-            <div className='errors'>
-                <div>{formErrors.name}</div>
-                <div>{formErrors.password}</div>
-            </div>
+            <form onSubmit={onSubmit}>
+                <h2>Login:</h2>
+                <div className='errors'>
+                    <div>{formErrors.username}</div>
+                    <div>{formErrors.password}</div>
+                </div>
 
-            <div className='inputs'>
-             
-                <label>Name/Username?
+                <div className='inputs'>
+
+                    <label>Username
         <input
-                        value={formValues.name}//update later
-                        onChange={onInputChange} //update Later
-                        name='name' //maybe username? 
-                        type='text'
-                        placeholder='Type a name' // or username
-                    />
-                </label>
-            
-                <label>Password:
+                            value={formValues.username}//update later
+                            onChange={onInputChange} //update Later
+                            name='username' //maybe username? 
+                            type='text'
+                            placeholder='Type a username' // or username
+                        />
+                    </label>
+
+                    <label>Password:
         <input
-                        value={formValues.password}//update later
-                        onChange={onInputChange} //update Later
-                        name='password' //maybe username? 
-                        type='password'
-                        placeholder='Type a password' // or username
-                    />
-                </label>
+                            value={formValues.password}//update later
+                            onChange={onInputChange} //update Later
+                            name='password' //maybe username? 
+                            type='password'
+                            placeholder='Type a password' // or username
+                        />
+                    </label>
 
-            </div>
+                </div>
 
-            <button disabled={disabled}>submit</button>
+                <button disabled={disabled}>submit</button>
 
-            {users.map((user, index) => {
-                // debugger
-                return (
-                    <div key={index}>
-                        <h2>Welcome {user.name} !</h2>
-                    </div>
-                )
-            })
-            }
-    
-        </form>
+                {users.map((user, index) => {
+                    // debugger
+                    return (
+                        <div key={index}>
+                            <h2>Welcome back {user.username} !</h2>
+                            {/* Update later */}
+                        </div>
+                    )
+                })
+                }
+
+            </form>
 
 
-        {/* <div className='signUp'>
+            {/* <div className='signUp'>
 <form onSubmit={onSubmit}>
             <Link to='/SignUp'>
                 <h2>Sign Up</h2>
@@ -181,8 +182,8 @@ const Login = () => {
                 </form>
 
             </div> */}
-            
-</>
+
+        </>
     )
 }
 

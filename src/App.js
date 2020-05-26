@@ -4,24 +4,44 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 
 const App = () => {
-    return(
+    return (
         <div className='App'>
             Food is HERE!!!
 
-            {/* Routes:  */}
-        
+          
+
+            {/* Routes & Links:  */}
             <Router>
+
+                  {/* Links: */}
+                  <div className='buttons'>
+                  <button className='loginBtn'>
+            <Link to='/login'>
+                Login
+            </Link>
+            </button>
+               
+            <button className='signUpBtn'>
+                     
+            <Link to='/signUp'>
+                Sign Up
+            </Link>
+        
+            </button>
+            </div>
+
+                {/* Routes: */}
                 <Switch>
                     <Route path='/login'>
-                <Login />
-                </Route>
+                        <Login />
+                    </Route>
 
-            <Route path='/signUp'>
-                <SignUp />
-                </Route>
+                    <Route path='/signUp'>
+                        <SignUp />
+                    </Route>
                 </Switch>
             </Router>
-          
+
         </div>
     )
 }
