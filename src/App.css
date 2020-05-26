@@ -1,9 +1,16 @@
 
 /* ``````` */
+body{
+    background-image: url('https://secret-family-recipe-ui.netlify.app/assets/brooke-lark-of0pMsWApZE-unsplash.jpg');
+    background-size:400%;
+    background-repeat: no-repeat;
+}
+
+
 
 .App {
     text-align: center;
- 
+   
 }
 
 
@@ -11,7 +18,17 @@
 button{
    font-size:1rem;
    border-radius: 5px;
+   /* border: 2px outset #C73B24; */
+   transition-duration: .4s;
+   
+   margin: 15px;
+}
 
+button:hover{
+    background-image: radial-gradient(circle, white, white, white, #C73B24);
+    /* background-color:rgb(88, 88, 88); 
+    color: white; */
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
 }
 
 button a{
@@ -19,14 +36,21 @@ button a{
     cursor: pointer;
     /* text-shadow: 1px 1px 1px black; */
     color: rgb(42, 42, 42);
+
+  
     
+}
+
+button a:hover{
+    /* color: white; */
 }
 
 form{
     border: 3px outset #C73B24;
     border-radius: 15px;
-    width:40%;
-    padding: 2%;
+    /* width:40%; */
+    float:left;
+    padding: 4% 6%;
     
 }
 
@@ -35,3 +59,17 @@ color:red;
 }
 
 
+input{
+    background-image: radial-gradient(circle, white, white, white, #C73B24);
+    /* display:flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+.inputs{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+   
+}

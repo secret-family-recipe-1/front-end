@@ -131,7 +131,7 @@ const Login = () => {
 
                 <div className='inputs'>
 
-                    <label>Username
+                    <label>Username:
         <input
                             value={formValues.username}//update later
                             onChange={onInputChange} //update Later
