@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import * as yup from 'yup'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 
 const initialFormValues = {
     ///// TEXT INPUTS /////
@@ -18,18 +18,18 @@ const initialFormErrors = {
     location: '',
 }
 
-const initialUsers = []
 const initialDisabled = true
 
 const SignUp = () => {
 
 
     // ```````````````````````States```````````: 
-    const [users, setUsers] = useState(initialUsers)
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
 
+    const { push } = useHistory();
+    
     // ````````````````````Helpers````````````````````:
     const formSchema = yup.object().shape({
 
@@ -53,18 +53,15 @@ const SignUp = () => {
 
 
     const postNewUser = newUser => {
-        axios.post('https://reqres.in/api/users', newUser)
+        axios.post('https://secretfamily.herokuapp.com/api/auth/register', newUser)
 
             .then(response => {
                 // debugger
-                setUsers([response.data, ...users])
-
+                console.log(response.data);
+                push('/login');
             })
             .catch(error => {
                 debugger
-            })
-            .finally(() => {
-                setFormValues(initialFormValues)
             })
     }
 
@@ -116,7 +113,7 @@ const SignUp = () => {
             .then(valid => {
                 setDisabled(!valid)
             })
-    }, [formValues])
+    }, [formValues, formSchema])
 
 
     return (
@@ -183,20 +180,6 @@ const SignUp = () => {
                 </div>
 
                 <button disabled={disabled}>submit</button>
-
-                {users.map((user, index) => {
-                    // debugger
-                    return (
-                        <div key={index}>
-                            <h2>Hello {user.name} !</h2>
-                            <h3>Your information:</h3>
-                            <p>Username: {user.username}</p>
-                            <p>Password: {user.password}</p>
-                            <p>Location: {user.location}</p>
-                        </div>
-                    )
-                })
-                }
 
             </form>
 

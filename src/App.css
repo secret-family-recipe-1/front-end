@@ -3,7 +3,35 @@
 
 .App {
     text-align: center;
+ 
 }
 
+
+
+button{
+   font-size:1rem;
+   border-radius: 5px;
+
+}
+
+button a{
+    text-decoration: none;
+    cursor: pointer;
+    /* text-shadow: 1px 1px 1px black; */
+    color: rgb(42, 42, 42);
+    
+}
+
+form{
+    border: 3px outset #C73B24;
+    border-radius: 15px;
+    width:40%;
+    padding: 2%;
+    
+}
+
+.errors{
+color:red;
+}
 
 
