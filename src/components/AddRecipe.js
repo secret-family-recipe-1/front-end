@@ -4,47 +4,24 @@ import { axiosWithAuth } from '../utils/axiosWithAuth';
 const initial = {
   title: '',
   source: '',
-  ingredients: ['', '', ''],
-  instructions: ['', '', ''],
+  ingredients: '',
+  instructions: '',
   category: ''
 }
 
 const AddRecipe = () => {
-  const [ recipe, setRecipe ] = useState(initial);
+  const [ newRecipe, setNewRecipe ] = useState(initial);
 
   const handleChange = e => {
-    if(e.target.name !== 'instructions' && e.target.name !== 'ingredients' ) {
-      setRecipe({
-        ...recipe,
-        [e.target.name]: e.target.value
-      })
-    } else {
-      const newArr = recipe[e.target.name].map((item, id) => {
-        if (Number(e.target.id) === id) {
-          return e.target.value;
-        }
-        return item;
-      })
-      setRecipe({
-        ...recipe,
-        [e.target.name]: newArr
-      })
-    }
-  }
-
-  const addInput = (e, name) => {
-    e.preventDefault();
-    setRecipe({ 
-      ...recipe,
-      [name]: [...recipe[name], '']
-     })
+      setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value })
   }
 
   const submitRecipe = e => {
     e.preventDefault();
 
     axiosWithAuth()
-      .post('endpoint', recipe)
+    // REMEMEMBER TO ADD AN ENDPOINT
+      .post('endpoint', newRecipe)
       .then(res => {
         console.log(res.data)
       })
@@ -52,7 +29,7 @@ const AddRecipe = () => {
         console.log(err)
       })
 
-      setRecipe(initial);
+      setNewRecipe(initial);
   }
 
   return (
@@ -61,7 +38,7 @@ const AddRecipe = () => {
         Title:
         <input
           name="title"
-          value={recipe.title}
+          value={newRecipe.title}
           onChange={handleChange}
         />
       </label>
@@ -69,7 +46,7 @@ const AddRecipe = () => {
         Source:
         <input
           name="source"
-          value={recipe.source}
+          value={newRecipe.source}
           onChange={handleChange}
         />
       </label>
@@ -77,35 +54,25 @@ const AddRecipe = () => {
         Category;
         <input
           name="category"
-          value={recipe.category}
+          value={newRecipe.category}
           onChange={handleChange}
         />
       </label>
       <label>
         Instructions
-        {recipe.instructions.map((item, id) => {
-          return <input
+        <input
             name="instructions"
-            key={'instructions' + id}
-            id={id}
-            value={item}
+            value={newRecipe.ingredients}
             onChange={handleChange}
           />
-        })}
-        <button onClick={(e) => addInput(e, 'instructions')}>+</button>
       </label>
       <label>
         Ingredients:
-        {recipe.ingredients.map((item, id) => {
-          return <input
+          <input
             name="ingredients"
-            key={'ingredients' + id}
-            id={id}
-            value={item}
+            value={newRecipe.ingredients}
             onChange={handleChange}
           />
-        })}
-        <button onClick={(e) => addInput(e, 'ingredients')}>+</button>
       </label>
       <button>Add Recipe!</button>
     </form>
