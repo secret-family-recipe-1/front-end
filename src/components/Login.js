@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import * as yup from 'yup'
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const initialFormValues = {
     ///// TEXT INPUTS /////
@@ -117,6 +117,13 @@ const Login = () => {
 
     return (
         <>
+            <div className='haveAccount'>
+                <h4> Don't have an account? </h4>
+                <button className='signUpBtn'>
+                    <Link to='/signUp'>Sign Up</Link>
+                </button>
+            </div>
+
             <form onSubmit={onSubmit}>
                 <h2>Login:</h2>
                 <div className='errors'>
@@ -164,24 +171,6 @@ const Login = () => {
             </form>
 
 
-            {/* <div className='signUp'>
-<form onSubmit={onSubmit}>
-            <Link to='/SignUp'>
-                <h2>Sign Up</h2>
-          
-            <label>Email
-        <input
-                        value={formValues.email}//update later
-                        onChange={onInputChange} //update Later
-                        name='email' //maybe username? 
-                        type='email'
-                        placeholder='Type an email' // or username
-                    />
-                </label>
-                </Link>
-                </form>
-
-            </div> */}
 
         </>
     )

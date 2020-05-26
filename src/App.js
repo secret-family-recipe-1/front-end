@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Recipe from './components/Recipe';
+
 
 const App = () => {
     return (
@@ -10,25 +12,8 @@ const App = () => {
 
           
 
-            {/* Routes & Links:  */}
+          
             <Router>
-
-                  {/* Links: */}
-                  <div className='buttons'>
-                  <button className='loginBtn'>
-            <Link to='/login'>
-                Login
-            </Link>
-            </button>
-               
-            <button className='signUpBtn'>
-                     
-            <Link to='/signUp'>
-                Sign Up
-            </Link>
-        
-            </button>
-            </div>
 
                 {/* Routes: */}
                 <Switch>

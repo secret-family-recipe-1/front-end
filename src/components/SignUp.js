@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import * as yup from 'yup'
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const initialFormValues = {
     ///// TEXT INPUTS /////
@@ -121,6 +121,14 @@ const SignUp = () => {
 
     return (
         <>
+
+            <div className='haveAccount'>
+                <h4> Already have an account? </h4>
+                <button className='loginBtn'>
+                    <Link to='/login'>Login</Link>
+                </button>
+            </div>
+
             <form onSubmit={onSubmit}>
                 <h2>Sign Up:</h2>
                 <div className='errors'>
@@ -135,40 +143,40 @@ const SignUp = () => {
                     <label>Username
         <input
                             value={formValues.username}
-                            onChange={onInputChange} 
-                            name='username' 
+                            onChange={onInputChange}
+                            name='username'
                             type='text'
-                            placeholder='Type a username' 
+                            placeholder='Type a username'
                         />
                     </label>
 
                     <label>Password:
         <input
                             value={formValues.password}
-                            onChange={onInputChange} 
-                            name='password'  
+                            onChange={onInputChange}
+                            name='password'
                             type='password'
-                            placeholder='Type a password' 
+                            placeholder='Type a password'
                         />
                     </label>
 
                     <label>Name:
         <input
                             value={formValues.name}
-                            onChange={onInputChange} 
-                            name='name' 
+                            onChange={onInputChange}
+                            name='name'
                             type='text'
-                            placeholder='Type a name' 
+                            placeholder='Type a name'
                         />
                     </label>
 
                     <label>Location:
         <input
                             value={formValues.location}
-                            onChange={onInputChange} 
-                            name='location' 
+                            onChange={onInputChange}
+                            name='location'
                             type='text'
-                            placeholder='Type a location/state' 
+                            placeholder='Type a location/state'
                         />
                     </label>
 
