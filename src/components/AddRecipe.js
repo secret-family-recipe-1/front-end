@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const initial = {
   title: '',
@@ -11,7 +12,6 @@ const initial = {
 const AddRecipe = () => {
   const [ recipe, setRecipe ] = useState(initial);
 
-
   const handleChange = e => {
     if(e.target.name !== 'instructions' && e.target.name !== 'ingredients' ) {
       setRecipe({
@@ -19,22 +19,44 @@ const AddRecipe = () => {
         [e.target.name]: e.target.value
       })
     } else {
-      const instructions = recipe[e.target.name].map((item, id) => {
+      const newArr = recipe[e.target.name].map((item, id) => {
         if (Number(e.target.id) === id) {
           return e.target.value;
         }
         return item;
       })
-
       setRecipe({
         ...recipe,
-        [e.target.name]: instructions
+        [e.target.name]: newArr
       })
     }
   }
 
+  const addInput = (e, name) => {
+    e.preventDefault();
+    setRecipe({ 
+      ...recipe,
+      [name]: [...recipe[name], '']
+     })
+  }
+
+  const submitRecipe = e => {
+    e.preventDefault();
+
+    axiosWithAuth()
+      .post('endpoint', recipe)
+      .then(res => {
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+
+      setRecipe(initial);
+  }
+
   return (
-    <form style={{ display: 'flex', flexDirection: 'column', padding: '100px' }}>
+    <form onSubmit={submitRecipe} style={{ display: 'flex', flexDirection: 'column', padding: '100px' }}>
       <label>
         Title:
         <input
@@ -59,27 +81,33 @@ const AddRecipe = () => {
           onChange={handleChange}
         />
       </label>
+      <label>
+        Instructions
         {recipe.instructions.map((item, id) => {
           return <input
             name="instructions"
-            key={item + id}
+            key={'instructions' + id}
             id={id}
             value={item}
             onChange={handleChange}
           />
         })}
+        <button onClick={(e) => addInput(e, 'instructions')}>+</button>
+      </label>
       <label>
         Ingredients:
         {recipe.ingredients.map((item, id) => {
           return <input
             name="ingredients"
-            key={item + id}
+            key={'ingredients' + id}
             id={id}
             value={item}
             onChange={handleChange}
           />
         })}
+        <button onClick={(e) => addInput(e, 'ingredients')}>+</button>
       </label>
+      <button>Add Recipe!</button>
     </form>
   );
 }
