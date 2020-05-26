@@ -4,7 +4,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Recipe from './components/Recipe';
 import Feed from './components/Feed'
-
+import './App.css';
 
 const App = () => {
     return (
