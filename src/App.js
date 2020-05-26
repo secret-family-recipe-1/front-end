@@ -4,12 +4,13 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
 import PrivateRoute from './components/PrivateRoute';
+import './App.css';
 
 
 const App = () => {
     return (
         <div className='App'>
-            Secret Family Recipes
+           <h1>Secret Family Recipes</h1> 
 
             <Router>
 
