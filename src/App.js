@@ -6,23 +6,27 @@ import Recipe from './components/Recipe';
 
 
 const App = () => {
-    return(
+    return (
         <div className='App'>
             Food is HERE!!!
-            {/* Routes:  */}
-        
+
+          
+
+          
             <Router>
+
+                {/* Routes: */}
                 <Switch>
                     <Route path='/login'>
-                <Login />
-                </Route>
+                        <Login />
+                    </Route>
 
-            <Route path='/signUp'>
-                <SignUp />
-                </Route>
+                    <Route path='/signUp'>
+                        <SignUp />
+                    </Route>
                 </Switch>
             </Router>
-          
+
         </div>
     )
 }
