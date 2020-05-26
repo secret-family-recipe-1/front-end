@@ -137,7 +137,7 @@ const SignUp = () => {
 
                 <div className='inputs'>
 
-                    <label>Username
+                    <label>Username:
         <input
                             value={formValues.username}
                             onChange={onInputChange}
