@@ -1,7 +1,22 @@
 import React from 'react';
-// import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { deleteRecipe, startEditing } from '../actions';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Recipe = (props) => {
+	const dispatch = useDispatch();
+	const { id } = useSelector(state => state.user)
+
+	const renderUsersButtons = () => {
+		if (Number(props.user_id) === Number(id)) {
+			return (
+				<>
+					<button onClick={() => dispatch(startEditing({ ...props }))}>Edit</button>
+					<button onClick={() => dispatch(deleteRecipe(props.id))}>Delete</button>
+				</>
+			)
+		}
+	}
+
 	return (
 		<div>
 			<h3>{props.source}</h3>
@@ -12,6 +27,7 @@ const Recipe = (props) => {
 			<p>Category: {props.category}</p>
 
 			<img src={props.img_url} alt={props.title} />
+			{ renderUsersButtons() }
 		</div>
 	);
 };

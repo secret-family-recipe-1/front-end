@@ -1,5 +1,5 @@
-import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { Route, Switch, useHistory } from 'react-router-dom';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
@@ -7,26 +7,32 @@ import PrivateRoute from './components/PrivateRoute';
 
 
 const App = () => {
+    const { push } = useHistory();
+
+    useEffect(() => {
+        if(localStorage.getItem('id') && localStorage.getItem('token')) {
+            push('/home');
+        } else {
+            push('/login');
+        }
+    }, [push])
+
     return (
         <div className='App'>
             Secret Family Recipes
 
-            <Router>
+            {/* Routes: */}
+            <Switch>
+                <Route path='/login'>
+                    <Login />
+                </Route>
 
-                {/* Routes: */}
-                <Switch>
-                    <Route path='/login'>
-                        <Login />
-                    </Route>
+                <Route path='/signUp'>
+                    <SignUp />
+                </Route>
 
-                    <Route path='/signUp'>
-                        <SignUp />
-                    </Route>
-
-                    <PrivateRoute path='/home' component={Home} />
-                </Switch>
-            </Router>
-
+                <PrivateRoute path='/home' component={Home} />
+            </Switch>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import * as yup from 'yup'
 import { Link, useHistory } from 'react-router-dom';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const initialFormValues = {
     ///// TEXT INPUTS /////
@@ -32,6 +33,7 @@ const Login = () => {
     const [formErrors, setFormErrors] = useState(initialFormErrors)
     const [disabled, setDisabled] = useState(initialDisabled)
     
+    
     const { push } = useHistory();
 
     // ````````````````````Helpers````````````````````:
@@ -54,9 +56,15 @@ const Login = () => {
 
             .then(response => {
                 // debugger
-                console.log(response)
+                // console.log(response)
                 localStorage.setItem('token', response.data.token);
-                push('/home')
+                axiosWithAuth()
+                    .get('/users')
+                    .then(res => {
+                        const [user] = res.data.filter(user => user.username === formValues.username);
+                        localStorage.setItem('id', user.id);
+                        push('/home');
+                    })
             })
             .catch(error => {
                 debugger
