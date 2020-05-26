@@ -1,22 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import * as yup from 'yup'
+import { Link } from 'react-router-dom';
 
 const initialFormValues = {
     ///// TEXT INPUTS /////
-    name: '',
+    username: '',
     password: '',
+    name: '',
+    location: '',
 }
 
 const initialFormErrors = {
-    name: '',
+    username: '',
     password: '',
+    name: '',
+    location: '',
 }
 
 const initialUsers = []
 const initialDisabled = true
 
 const SignUp = () => {
+
+
     // ```````````````````````States```````````: 
     const [users, setUsers] = useState(initialUsers)
     const [formValues, setFormValues] = useState(initialFormValues)
@@ -26,32 +33,39 @@ const SignUp = () => {
     // ````````````````````Helpers````````````````````:
     const formSchema = yup.object().shape({
 
-        name: yup.string()
+        username: yup.string()
             .trim()
-            .min(4, 'Name has to be at least 4 characters long')
-            .required('Name is required field'),
+            .min(4, 'Username has to be at least 4 characters long')
+            .required('Username is required field'),
         password: yup.string()
             .trim()
             .min(5, 'Password has to be at least 5 characters long')
             .required('Password is required field'),
+        location: yup.string()
+            .trim()
+            .min(2, 'Location has to be at least 2 characters long')
+            .required('Location is required field, please specify your state'),
+        name: yup.string()
+            .trim()
+            // .min(4, 'Name has to be at least 4 characters long')
+            .required('Name is required field'),
     })
-
 
 
     const postNewUser = newUser => {
         axios.post('https://reqres.in/api/users', newUser)
 
-          .then(response => {
-            // debugger
-            setUsers([response.data, ...users])
+            .then(response => {
+                // debugger
+                setUsers([response.data, ...users])
 
-          })
-          .catch(error => {
-            debugger
-          })
-          .finally(() => {
-            setFormValues(initialFormValues)
-          })
+            })
+            .catch(error => {
+                debugger
+            })
+            .finally(() => {
+                setFormValues(initialFormValues)
+            })
     }
 
 
@@ -87,9 +101,10 @@ const SignUp = () => {
         event.preventDefault()
 
         const newUser = {
-            name: formValues['name'].trim(),
+            username: formValues['username'].trim(),
             password: formValues['password'].trim(),
-
+            location: formValues['location'].trim(),
+            name: formValues['name'].trim(),
         }
 
         postNewUser(newUser)
@@ -105,49 +120,87 @@ const SignUp = () => {
 
 
     return (
-        <form onSubmit={onSubmit}>
-            <h2>Sign Up:</h2>
-            <div className='errors'>
-                <div>{formErrors.name}</div>
-                <div>{formErrors.password}</div>
+        <>
+
+            <div className='haveAccount'>
+                <h4> Already have an account? </h4>
+                <button className='loginBtn'>
+                    <Link to='/login'>Login</Link>
+                </button>
             </div>
 
-            <div className='inputs'>
-             
-                <label>Name/Username?
+            <form onSubmit={onSubmit}>
+                <h2>Sign Up:</h2>
+                <div className='errors'>
+                    <div>{formErrors.username}</div>
+                    <div>{formErrors.password}</div>
+                    <div>{formErrors.location}</div>
+                    <div>{formErrors.name}</div>
+                </div>
+
+                <div className='inputs'>
+
+                    <label>Username
         <input
-                        value={formValues.name}//update later
-                        onChange={onInputChange} //update Later
-                        name='name' //maybe username? 
-                        type='text'
-                        placeholder='Type a name' // or username
-                    />
-                </label>
-            
-                <label>Password
+                            value={formValues.username}
+                            onChange={onInputChange}
+                            name='username'
+                            type='text'
+                            placeholder='Type a username'
+                        />
+                    </label>
+
+                    <label>Password:
         <input
-                        value={formValues.password}//update later
-                        onChange={onInputChange} //update Later
-                        name='password' //maybe username? 
-                        type='password'
-                        placeholder='Type a password' // or username
-                    />
-                </label>
+                            value={formValues.password}
+                            onChange={onInputChange}
+                            name='password'
+                            type='password'
+                            placeholder='Type a password'
+                        />
+                    </label>
 
-            </div>
+                    <label>Name:
+        <input
+                            value={formValues.name}
+                            onChange={onInputChange}
+                            name='name'
+                            type='text'
+                            placeholder='Type a name'
+                        />
+                    </label>
 
-            <button disabled={disabled}>submit</button>
+                    <label>Location:
+        <input
+                            value={formValues.location}
+                            onChange={onInputChange}
+                            name='location'
+                            type='text'
+                            placeholder='Type a location/state'
+                        />
+                    </label>
 
-            {users.map((user, index) => {
-                // debugger
-                return (
-                    <div key={index}>
-                        <h2>Welcome {user.name} !</h2>
-                    </div>
-                )
-            })
-            }
-        </form>
+                </div>
+
+                <button disabled={disabled}>submit</button>
+
+                {users.map((user, index) => {
+                    // debugger
+                    return (
+                        <div key={index}>
+                            <h2>Hello {user.name} !</h2>
+                            <h3>Your information:</h3>
+                            <p>Username: {user.username}</p>
+                            <p>Password: {user.password}</p>
+                            <p>Location: {user.location}</p>
+                        </div>
+                    )
+                })
+                }
+
+            </form>
+
+        </>
     )
 }
 
