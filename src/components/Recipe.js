@@ -11,7 +11,7 @@ const Recipe = (props) => {
 			<p>Instructions:{props.instructions}</p>
 			<p>Category: {props.category}</p>
 
-			<img src={props.img_url} alt={`picture of ${props.title}`} />
+			<img src={props.img_url} alt={props.title} />
 		</div>
 	);
 };

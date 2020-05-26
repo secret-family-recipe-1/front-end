@@ -22,7 +22,7 @@ export const reducer = (state = initial, action) => {
         return recipe;
       })};
     case 'DELETE_RECIPE':
-      return {...state, recipes: recipes.filter(item => action.payload !== item.id)}
+      return {...state, recipes: state.recipes.filter(item => action.payload !== item.id)}
     default:
       return state;
   }
