@@ -33,7 +33,7 @@ const AddRecipe = () => {
   }
 
   return (
-    <form onSubmit={submitRecipe} style={{ display: 'flex', flexDirection: 'column', padding: '100px' }}>
+    <form onSubmit={submitRecipe}>
       <label>
         Title:
         <input
