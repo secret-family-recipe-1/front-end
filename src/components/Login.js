@@ -162,7 +162,6 @@ const Login = () => {
                     return (
                         <div key={index}>
                             <h2>Welcome back {user.username} !</h2>
-                            {/* Update later */}
                         </div>
                     )
                 })

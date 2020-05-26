@@ -193,7 +193,6 @@ const SignUp = () => {
                             <p>Username: {user.username}</p>
                             <p>Password: {user.password}</p>
                             <p>Location: {user.location}</p>
-                            {/* Update later */}
                         </div>
                     )
                 })
