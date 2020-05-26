@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useDispatch } from 'react-redux';
+import { addRecipe } from '../actions';
 
 const initial = {
   title: '',
@@ -11,6 +12,7 @@ const initial = {
 
 const AddRecipe = () => {
   const [ newRecipe, setNewRecipe ] = useState(initial);
+  const dispatch = useDispatch();
 
   const handleChange = e => {
       setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value })
@@ -19,17 +21,9 @@ const AddRecipe = () => {
   const submitRecipe = e => {
     e.preventDefault();
 
-    axiosWithAuth()
-    // REMEMEMBER TO ADD AN ENDPOINT
-      .post('endpoint', newRecipe)
-      .then(res => {
-        console.log(res.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    dispatch(addRecipe({...newRecipe, user_id: localStorage.getItem('id')}));
 
-      setNewRecipe(initial);
+    setNewRecipe(initial);
   }
 
   return (
@@ -62,7 +56,7 @@ const AddRecipe = () => {
         Instructions
         <input
             name="instructions"
-            value={newRecipe.ingredients}
+            value={newRecipe.instructions}
             onChange={handleChange}
           />
       </label>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateRecipe } from '../actions';
 
 const initial = {
   title: '',
@@ -11,10 +12,12 @@ const initial = {
 
 const UpdateRecipe = () => {
   const [newRecipe, setNewRecipe] = useState(initial);
+  const recipe = useSelector(state => state.editing)
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // Set form values to form values we are updating
-  }, [])
+    if(recipe)  setNewRecipe(recipe);
+  }, [recipe])
 
   const handleChange = e => {
     setNewRecipe({ ...newRecipe, [e.target.name]: e.target.value })
@@ -23,21 +26,13 @@ const UpdateRecipe = () => {
   const submitRecipe = e => {
     e.preventDefault();
 
-    axiosWithAuth()
-    // REMEMEMBER TO ADD AN ENDPOINT
-      .put('endpoint', newRecipe)
-      .then(res => {
-        console.log(res.data)
-      })
-      .catch(err => {
-        console.log(err)
-      })
+    dispatch(updateRecipe(newRecipe))
 
     setNewRecipe(initial);
   }
 
   return (
-    <form onSubmit={submitRecipe} style={{ display: 'flex', flexDirection: 'column', padding: '100px' }}>
+    <form onSubmit={submitRecipe}>
       <label>
         Title:
         <input
@@ -66,7 +61,7 @@ const UpdateRecipe = () => {
         Instructions
         <input
           name="instructions"
-          value={newRecipe.ingredients}
+          value={newRecipe.instructions}
           onChange={handleChange}
         />
       </label>
@@ -78,7 +73,7 @@ const UpdateRecipe = () => {
           onChange={handleChange}
         />
       </label>
-      <button>Add Recipe!</button>
+      <button>Update Recipe!</button>
     </form>
   );
 }

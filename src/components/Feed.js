@@ -1,30 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Recipe from './Recipe';
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchRecipes } from '../actions';
+
 
 
 const Feed = () => {
-    const [recipes, setRecipes] = useState([]);
+    const recipes = useSelector(state => state.recipes);
+    const dispatch = useDispatch();
+
+    console.log(recipes);
 
     useEffect(() => {
-        // Set form values to form values we are updating
-        axiosWithAuth()
-        .get('/recipes')
-        .then(res => {
-          setRecipes(res.data)
-        })
-        .catch(err => {
-          debugger
-        })
-
-    }, [])
-
+        dispatch(fetchRecipes());
+    }, [dispatch])
 
     return (
         <div>
             {recipes.map( recipe => {
                 return (
-                    <Recipe key={recipe.id} {...recipe}/>
+                    <Recipe key={recipe.title + recipe.id} {...recipe}/>
                 )
             })}
         </div>
