@@ -7,8 +7,10 @@ const initial = {
   source: '',
   ingredients: '',
   instructions: '',
-  category: ''
+  category: '',
+  img_url: ''
 }
+
 
 const UpdateRecipe = () => {
   const [newRecipe, setNewRecipe] = useState(initial);
@@ -70,6 +72,14 @@ const UpdateRecipe = () => {
           <input
           name="ingredients"
           value={newRecipe.ingredients}
+          onChange={handleChange}
+        />
+      </label>
+      <label>
+        Image URL:
+          <input
+          name="img_url"
+          value={newRecipe.img_url}
           onChange={handleChange}
         />
       </label>

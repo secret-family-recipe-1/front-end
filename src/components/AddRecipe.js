@@ -7,7 +7,8 @@ const initial = {
   source: '',
   ingredients: '',
   instructions: '',
-  category: ''
+  category: '',
+  img_url: ''
 }
 
 const AddRecipe = () => {
@@ -67,6 +68,14 @@ const AddRecipe = () => {
             value={newRecipe.ingredients}
             onChange={handleChange}
           />
+      </label>
+      <label>
+        Image URL:
+          <input
+          name="img_url"
+          value={newRecipe.img_url}
+          onChange={handleChange}
+        />
       </label>
       <button>Add Recipe!</button>
     </form>

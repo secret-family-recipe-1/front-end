@@ -19,15 +19,18 @@ const Recipe = (props) => {
 
 	return (
 		<div className="recipe-card">
-			<h3>{props.source}</h3>
-			<p>Title: {props.title}</p>
-			<p>Source: {props.source}</p>
-			<p>Ingredients: {props.ingredients}</p>
-			<p>Instructions:{props.instructions}</p>
-			<p>Category: {props.category}</p>
-
+			<div className="recipe-info">
+				<h3>{props.source}</h3>
+				<p><span>Title:</span> <span>{props.title}</span></p>
+				<p><span>Source:</span> <span>{props.source}</span></p>
+				<p><span>Ingredients:</span> <span>{props.ingredients}</span></p>
+				<p><span>Instructions:</span> <span>{props.instructions}</span></p>
+				<p><span>Category:</span> <span>{props.category}</span></p>
+			</div>
 			<img src={props.img_url} alt={props.title} />
-			{ renderUsersButtons() }
+			<div className="recipe-buttons">
+				{renderUsersButtons()}
+			</div>
 		</div>
 	);
 };
