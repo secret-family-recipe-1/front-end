@@ -21,14 +21,9 @@ const App = () => {
 
     return (
 <>
-        {/* <div className='bg-image'>
-        <div class="blur"></div>
-        </div> */}
         <div className='App'>
-        <div class="blur"></div>
                <NavBar /> 
-          
-         
+               
             {/* Routes: */}
             <Switch>
                 <Route path='/login'>

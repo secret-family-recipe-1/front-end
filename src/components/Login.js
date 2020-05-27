@@ -122,13 +122,7 @@ const Login = () => {
 
 
     return (
-        <div className='login-singUp'>
-            <div className='haveAccount'>
-                <h4> Don't have an account? </h4>
-                <button className='signUpBtn'>
-                    <Link to='/signUp'>Sign Up</Link>
-                </button>
-            </div>
+        <div className='login-signUp'>
 
             <form onSubmit={onSubmit}>
                 <h2>Login:</h2>
@@ -165,7 +159,12 @@ const Login = () => {
 
             </form>
 
-
+            <div className='haveAccount'>
+                <h4> Don't have an account? </h4>
+                <button className='signUpBtn'>
+                    <Link to='/signUp'>Sign Up</Link>
+                </button>
+            </div>
 
         </div>
     )

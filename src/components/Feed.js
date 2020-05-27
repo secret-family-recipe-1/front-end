@@ -16,7 +16,7 @@ const Feed = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className="feed">
             {recipes.map( recipe => {
                 return (
                     <Recipe key={recipe.title + recipe.id} {...recipe}/>

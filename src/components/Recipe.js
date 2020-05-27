@@ -18,7 +18,7 @@ const Recipe = (props) => {
 	}
 
 	return (
-		<div>
+		<div className="recipe-card">
 			<h3>{props.source}</h3>
 			<p>Title: {props.title}</p>
 			<p>Source: {props.source}</p>
