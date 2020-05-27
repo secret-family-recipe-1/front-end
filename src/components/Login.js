@@ -122,7 +122,7 @@ const Login = () => {
 
 
     return (
-        <>
+        <div className='login-singUp'>
             <div className='haveAccount'>
                 <h4> Don't have an account? </h4>
                 <button className='signUpBtn'>
@@ -167,7 +167,7 @@ const Login = () => {
 
 
 
-        </>
+        </div>
     )
 }
 

@@ -1,17 +1,27 @@
 
 /* ``````` */
-body{
+
+.bg-image{
     background-image: url('https://secret-family-recipe-ui.netlify.app/assets/brooke-lark-of0pMsWApZE-unsplash.jpg');
-    background-size:400%;
-    background-repeat: no-repeat;
-    
+  filter: blur(8px);
+height: 200vh;
+  
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-
-
 
 .App {
     text-align: center;
-   
+    position: absolute;
+    top: 20%;
+    left: 20%;
+
+    z-index: 2;
+
+    text-align: center;
+    
 }
 
 
@@ -19,27 +29,19 @@ body{
 button{
    font-size:1rem;
    border-radius: 5px;
-   /* border: 2px outset #C73B24; */
-   transition-duration: .4s;
-   
+   transition-duration: .4s;  
    margin: 15px;
 }
 
 button:hover{
     background-image: radial-gradient(circle, white, white, white, #C73B24);
-    /* background-color:rgb(88, 88, 88); 
-    color: white; */
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
 }
 
 button a{
     text-decoration: none;
     cursor: pointer;
-    /* text-shadow: 1px 1px 1px black; */
-    color: rgb(42, 42, 42);
-
-  
-    
+    color: rgb(42, 42, 42);  
 }
 
 button a:hover{
@@ -49,11 +51,12 @@ button a:hover{
 form{
     border: 3px outset #C73B24;
     border-radius: 15px;
-    /* width:40%; */
     float:left;
     padding: 4% 6%;
     background-color:#fbfbfb;
-    
+    background-color: rgba(233, 155, 155, 0.7); 
+    font-weight: bold;
+ 
 }
 
 .errors{
@@ -62,7 +65,7 @@ color:crimson;
 
 
 input{
-    background-image: radial-gradient(circle, white, white, white, #C73B24);
+    background-image: radial-gradient(circle, white, white, white, rgb(199, 59, 36, 0.6));
     /* display:flex;
     justify-content: center;
     align-items: center; */
@@ -75,3 +78,4 @@ input{
     align-items: center;
    
 }
+

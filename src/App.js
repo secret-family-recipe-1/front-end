@@ -20,9 +20,11 @@ const App = () => {
     }, [push])
 
     return (
+<>
+        <div className='bg-image'></div>
         <div className='App'>
                <NavBar /> 
-           {/* <h1>Secret Family Recipes</h1>  */}
+          
          
             {/* Routes: */}
             <Switch>
@@ -37,6 +39,7 @@ const App = () => {
                 <PrivateRoute path='/home' component={Home} />
             </Switch>
         </div>
+        </>
     )
 }
 

@@ -117,7 +117,7 @@ const SignUp = () => {
 
 
     return (
-        <>
+        <div className='login-singUp'>
 
             <div className='haveAccount'>
                 <h4> Already have an account? </h4>
@@ -183,7 +183,7 @@ const SignUp = () => {
 
             </form>
 
-        </>
+        </div>
     )
 }
 
