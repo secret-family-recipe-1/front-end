@@ -1,7 +1,11 @@
 /* ``````` */
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
 *{
     padding:0;
     margin:0;
+    font-size: 1rem;
+    max-width: 100%;
 }
 
 body{
@@ -11,25 +15,22 @@ body{
     background-size: cover;
     min-height: 100vh;
     backdrop-filter: blur(8px); 
-    
+    padding-top: 10vh;
 }
-
 
 .App {
 
     display:flex;
     flex-direction: column;
     align-items: center;
-   
 }
-
 
 
 button{
    font-size:1rem;
    border-radius: 5px;
    transition-duration: .4s;  
-   margin: 15px;
+   padding: 2%;
 }
 
 button:hover{
@@ -37,7 +38,7 @@ button:hover{
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19)
 }
 
-button a{
+a {
     text-decoration: none;
     cursor: pointer;
     color: rgb(42, 42, 42);  
@@ -45,13 +46,7 @@ button a{
 
 
 form{
-    border: 3px outset #C73B24;
-    border-radius: 15px;
-   
-    padding: 4% 6%;
-    background-color:#fbfbfb;
-    background-color: rgba(233, 155, 155, 0.7); 
-    font-weight: bold;
+  
  
 }
 
@@ -70,4 +65,113 @@ input{
     justify-content: space-between;
     align-items: center;
    
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 8vh;
+    background-color: #EAF4D3;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 3px solid #C73B24;;
+}
+
+nav > * {
+    margin: 0 4%;
+}
+
+nav a {
+    padding: 2%;
+    border: 1px solid white;
+    border-radius: 4px;
+    color: white;
+    background-color: #C73B24;
+}
+
+.right-nav {
+    display: flex;
+    width: 30%;
+    justify-content: space-around;
+}
+
+.logo {
+    font-family: 'Handlee', cursive;
+    font-size: 2rem;
+}
+
+.login-signUp {
+    border: 3px outset #C73B24;
+    border-radius: 15px;
+   
+    padding: 4% 6%;
+    background-color:#fbfbfb;
+    background-color: rgba(233, 155, 155, 0.7); 
+    font-weight: bold;
+    width: 45%;
+}
+
+.login-signUp h2 {
+    font-size: 1.3rem;
+}
+
+.login-signUp label {
+    margin: 2% 0;
+}
+
+.login-signUp label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.login-signUp form button {
+    width: 100%;
+}
+
+.login-signUp form button:disabled {
+    background-color: rgba(234, 244, 211, 0.8);
+}
+
+
+.haveAccount {
+    text-align: center;
+    margin-top: 4%;
+}
+
+.feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recipe-card {
+    width: 60%;
+    background-color: #EAF4D3;
+    padding: 3%;
+    border-radius: 30px;
+    margin: 2% 0;
+    border: 3px outset #C73B24;
+}
+
+.recipe-form {
+    display: flex;
+    flex-direction: column;
+    background-color: #EAF4D3;
+    padding: 3%;
+    border-radius: 10px;
+    width: 50%;
+    border: 3px outset #C73B24;
+}
+
+.recipe-form label {
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-form > * {
+    margin-top: 2%;
 }

@@ -32,7 +32,7 @@ const UpdateRecipe = () => {
   }
 
   return (
-    <form onSubmit={submitRecipe}>
+    <form onSubmit={submitRecipe} className="recipe-form">
       <label>
         Title:
         <input

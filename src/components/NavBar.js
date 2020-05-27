@@ -1,22 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
-const NavBar = (props) => {
-// const {loggedIn, setLoggedIn} = props
-
+const NavBar = () => {
+  const [ loggedIn, setLoggedIn ] = useState(false)
+  const user = useSelector(state => state.user)
 
   const logout= () => {
-    alert('You`ve been logged out ')
-    localStorage.removeItem('token')
-    localStorage.removeItem('id')
+    if(loggedIn) {
+      alert('You`ve been logged out ');
+      localStorage.removeItem('token');
+      localStorage.removeItem('id');
+      setLoggedIn(false);
+    }
   }
+
+  useEffect(() => {
+    if(Object.values(user).length !== 0) setLoggedIn(true);
+  }, [user])
 
   return (
     <nav>
-<h2>Secret Family Recipies</h2>
- 
-  {/* <Link onClick={logout} to="/login">{(loggedIn) ? 'Log Out' : 'Log In'}</Link> */}
-    <Link to='/login' onClick={logout}> Log Out </Link>
+      <h2 className="logo">Secret Family Recipies</h2>
+      <div className="right-nav">
+        <a href="https://secret-family-recipe-ui.netlify.app/">Marketing</a>
+        <Link onClick={logout} to="/login">{(loggedIn) ? 'Log Out' : 'Log In'}</Link>
+      </div>
     </nav>
   );
 }

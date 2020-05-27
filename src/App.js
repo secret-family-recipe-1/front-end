@@ -21,12 +21,9 @@ const App = () => {
 
     return (
 <>
-     
         <div className='App'>
-   
                <NavBar /> 
-          
-         
+               
             {/* Routes: */}
             <Switch>
                 <Route path='/login'>
