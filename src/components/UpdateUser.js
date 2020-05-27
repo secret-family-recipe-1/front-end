@@ -10,7 +10,7 @@ const initial = {
   location: ''
 }
 
-const UpdateUser = () => {
+const UpdateUser = ({ setUpdatingUser }) => {
   const [newUser, setNewUser] = useState(initial);
   const user = useSelector(state => state.user)
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const UpdateUser = () => {
     e.preventDefault();
 
     dispatch(updateUser(newUser))
-
+    setUpdatingUser(false)
     setNewUser(initial);
   }
 
@@ -47,7 +47,7 @@ const UpdateUser = () => {
   }
 
   return (
-    <form onSubmit={submitUser}>
+    <form onSubmit={submitUser} className="recipe-form">
       <label>
         Username:
         <input
