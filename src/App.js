@@ -5,6 +5,7 @@ import SignUp from './components/SignUp'
 import Home from './components/Home'
 import PrivateRoute from './components/PrivateRoute';
 import './App.css';
+import NavBar from './components/NavBar'
 
 
 const App = () => {
@@ -19,9 +20,10 @@ const App = () => {
     }, [push])
 
     return (
+<>
         <div className='App'>
-           <h1>Secret Family Recipes</h1> 
-
+               <NavBar /> 
+               
             {/* Routes: */}
             <Switch>
                 <Route path='/login'>
@@ -35,6 +37,7 @@ const App = () => {
                 <PrivateRoute path='/home' component={Home} />
             </Switch>
         </div>
+        </>
     )
 }
 
