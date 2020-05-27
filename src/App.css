@@ -83,7 +83,7 @@ nav > * {
 }
 
 nav a {
-    padding: 2% 4%;
+    padding: .5rem 1rem;
     border: 1px solid white;
     border-radius: 4px;
     color: #EAF4D3;
@@ -101,7 +101,7 @@ nav a {
     font-family: 'Handlee', cursive;
     font-size: 2rem;
     color: #C73B24;
-    text-shadow: 2px 2px #273043;
+    text-shadow: 1px 1px #273043;
 }
 
 .login-signUp {
