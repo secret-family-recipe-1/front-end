@@ -83,7 +83,7 @@ nav > * {
 }
 
 nav a {
-    padding: 2% 4%;
+    padding: .5rem 1rem;
     border: 1px solid white;
     border-radius: 4px;
     color: #EAF4D3;
