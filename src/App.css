@@ -124,6 +124,7 @@ nav a {
 .login-signUp {
     border: 3px solid rgba(199, 59, 36, 0.5);
     border-radius: 15px;
+    
    
     padding: 4% 6%;
     background-color: #fff;
@@ -258,4 +259,9 @@ nav a {
 
 .search-bar input {
     width: 100%;
+}
+
+.spinner {
+    display: flex;
+    justify-content: center;
 }
