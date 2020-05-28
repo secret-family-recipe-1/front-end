@@ -103,16 +103,7 @@ nav a {
     justify-content: space-around;
 }
 
-@media (max-width: 800px) {
-    .right-nav {
-     width:60%;
-    
-    }
-    nav{
-        display:flex;
-        flex-direction: column;
-    }
-}
+
 
 .logo {
     font-family: 'Handlee', cursive;
@@ -264,4 +255,20 @@ nav a {
 .spinner {
     display: flex;
     justify-content: center;
+}
+ 
+/* Media Queries below:  */
+
+@media (max-width: 800px) {
+    .right-nav {
+     width:60%;
+    }
+    nav{
+        display:flex;
+        flex-direction: column;
+        height: 15vh;
+    }
+body{
+    padding-top: 25%;
+}
 }
