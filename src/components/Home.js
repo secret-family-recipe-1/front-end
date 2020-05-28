@@ -17,6 +17,10 @@ const Home = () => {
     dispatch(fetchUser(localStorage.getItem('id')));
   }, [dispatch])
 
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [editing])
+
   const showUpdateUser = () => {
     setUpdatingUser(true);
   }
