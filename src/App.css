@@ -263,10 +263,16 @@ nav a {
     .right-nav {
      width:60%;
     }
+    .logo{
+        font-size:1.3rem;
+    }
     nav{
         display:flex;
         flex-direction: column;
         height: 15vh;
+    }
+    nav a{
+        font-size:.8rem;
     }
 body{
     padding-top: 20vh;
