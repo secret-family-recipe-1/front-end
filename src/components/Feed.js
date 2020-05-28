@@ -10,8 +10,6 @@ const Feed = () => {
     const dispatch = useDispatch();
     const [ search, setSearch ] = useState('');
 
-    console.log(recipes);
-
     useEffect(() => {
         dispatch(fetchRecipes());
     }, [dispatch])
@@ -22,6 +20,7 @@ const Feed = () => {
             || recipe.category.toLowerCase().includes(search.toLowerCase())) {
                 return recipe;
             }
+            return null;
         })
     }
 
