@@ -3,6 +3,7 @@ import axios from 'axios'
 import * as yup from 'yup'
 import { Link, useHistory } from 'react-router-dom';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import Loader from 'react-loader-spinner';
 
 const initialFormValues = {
     ///// TEXT INPUTS /////
@@ -31,6 +32,7 @@ const Login = () => {
     // ```````````````````````States```````````: 
     const [formValues, setFormValues] = useState(initialFormValues)
     const [formErrors, setFormErrors] = useState(initialFormErrors)
+    const [isLoading, setIsLoading] = useState(false)
     const [disabled, setDisabled] = useState(initialDisabled)
     
     
@@ -52,6 +54,7 @@ const Login = () => {
 
     // 'https://reqres.in/api/users'
     const postNewUser = newUser => {
+        setIsLoading(true)
         axios.post('https://secretfamily.herokuapp.com/api/auth/login', newUser)
 
             .then(response => {
@@ -158,7 +161,7 @@ const Login = () => {
                 <button disabled={disabled}>submit</button>
 
             </form>
-
+            {isLoading && <div className='spinner'><Loader type="BallTriangle" color="#00BFFF" height={80} width={80} /></div>}
             <div className='haveAccount'>
                 <h4> Don't have an account? </h4>
                 
