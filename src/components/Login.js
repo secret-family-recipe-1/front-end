@@ -161,9 +161,11 @@ const Login = () => {
 
             <div className='haveAccount'>
                 <h4> Don't have an account? </h4>
-                <button className='signUpBtn'>
-                    <Link to='/signUp'>Sign Up</Link>
-                </button>
+                
+                <Link to='/signUp'>
+                    <button>Sign Up</button>
+                </Link>
+               
             </div>
 
         </div>
