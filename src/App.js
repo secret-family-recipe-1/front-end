@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Route, useHistory } from 'react-router-dom';
 import Login from './components/Login'
 import SignUp from './components/SignUp'
 import Home from './components/Home'
@@ -14,19 +14,16 @@ const App = () => {
     useEffect(() => {
         if(localStorage.getItem('id') && localStorage.getItem('token')) {
             push('/home');
-        } else {
-            push('/login');
         }
     }, [push])
 
     return (
-<>
-        <div className='App'>
-               <NavBar /> 
-               
-            {/* Routes: */}
-            <Switch>
-                <Route path='/login'>
+        <>
+            <div className='App'>
+                <NavBar /> 
+                
+                {/* Routes: */}
+                <Route exact path='/'>
                     <Login />
                 </Route>
 
@@ -35,8 +32,7 @@ const App = () => {
                 </Route>
 
                 <PrivateRoute path='/home' component={Home} />
-            </Switch>
-        </div>
+            </div>
         </>
     )
 }
