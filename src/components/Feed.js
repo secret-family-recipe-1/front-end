@@ -14,6 +14,18 @@ const Feed = () => {
         dispatch(fetchRecipes());
     }, [dispatch])
 
+    // useEffect(() => {
+    //     // Set form values to form values we are updating
+    //     axios.get('https://secretfamily.herokuapp.com/api/recipes')
+    //     .then(res => {
+    //       setRecipes(res.data)
+    //     })
+    //     .catch(err => {
+    //       debugger
+    //     })
+
+    // }, []) -> old code for line 13-15
+
     const filterRecipes = () => {
         return recipes.filter(recipe => {
            if(recipe.title.toLowerCase().includes(search.toLowerCase()) 
