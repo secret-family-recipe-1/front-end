@@ -24,7 +24,7 @@ const NavBar = () => {
       <h2 className="logo">Secret Family Recipe Cookbook</h2>
       <div className="right-nav">
         <a target="blank" href="https://secret-family-recipe-ui.netlify.app/">Marketing</a>
-        <Link onClick={logout} to="/login">{(loggedIn) ? 'Log Out' : 'Log In'}</Link>
+        <Link onClick={logout} to="/">{(loggedIn) ? 'Log Out' : 'Log In'}</Link>
       </div>
     </nav>
   );
