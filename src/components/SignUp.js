@@ -58,7 +58,7 @@ const SignUp = () => {
             .then(response => {
                 // debugger
                 console.log(response.data);
-                push('/login');
+                push('/');
             })
             .catch(error => {
                 debugger

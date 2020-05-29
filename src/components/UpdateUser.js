@@ -48,6 +48,7 @@ const UpdateUser = ({ setUpdatingUser }) => {
 
   return (
     <form onSubmit={submitUser} className="recipe-form">
+      <button onClick={() => setUpdatingUser(false)} className="close">Close</button>
       <label>
         Username:
         <input

@@ -97,6 +97,12 @@ nav a {
     font-size: 1.2rem;
 }
 
+nav a:hover {
+    background-color: #fff;
+    color: #C73B24;
+    border: 2px solid #C73B24;
+}
+
 .right-nav {
     display: flex;
     width: 30%;
@@ -213,7 +219,15 @@ nav a {
     padding: 3%;
     border-radius: 10px;
     width: 50%;
-    border: 3px solid rgba(199, 59, 36, 0.5)
+    border: 3px solid rgba(199, 59, 36, 0.5);
+    position: relative;
+}
+
+.recipe-form .close {
+    position: absolute;
+    top: 1%;
+    right: 2%;
+    padding: 0.5rem;
 }
 
 .recipe-form label {
@@ -240,6 +254,12 @@ nav a {
     font-size: 1.4rem;
 }
 
+.home-page .home-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    width: 60%;
+}
+
 .search-bar {
     background-color: #fff;
     width: 100%;
@@ -256,7 +276,7 @@ nav a {
     display: flex;
     justify-content: center;
 }
- 
+
 /* Media Queries below:  */
 
 @media (max-width: 800px) {

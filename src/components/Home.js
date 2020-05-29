@@ -11,6 +11,7 @@ const Home = () => {
   const editing = useSelector(state => state.editing)
   const dispatch = useDispatch();
   const [ updatingUser, setUpdatingUser ] = useState(false);
+  const [ addingRecipe, setAddingRecipe ] = useState(false);
 
 
   useEffect(() => {
@@ -25,12 +26,20 @@ const Home = () => {
     setUpdatingUser(true);
   }
 
+  const showAddRecipe = () => {
+    setAddingRecipe(true);
+  }
+
   return (
     <div className="home-page">
       {user && <h2>Welcome, {user.name}</h2>}
-      {!updatingUser && <button onClick={showUpdateUser}>Update Your Info</button>}
+      <div className="home-buttons">
+        {!updatingUser && <button onClick={showUpdateUser}>Update Your Info</button>}
+        {!addingRecipe && <button  onClick={showAddRecipe}>Add a recipe</button>}
+      </div>
       {updatingUser && <UpdateUser setUpdatingUser={setUpdatingUser} />}
-      {(editing) ? <UpdateRecipe /> : <AddRecipe />}
+      {addingRecipe && <AddRecipe setAddingRecipe={setAddingRecipe} />}
+      {editing && <UpdateRecipe />}
       <Feed />
     </div>
   );
