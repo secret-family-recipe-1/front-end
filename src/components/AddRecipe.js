@@ -11,7 +11,7 @@ const initial = {
   img_url: ''
 }
 
-const AddRecipe = () => {
+const AddRecipe = ({ setAddingRecipe }) => {
   const [ newRecipe, setNewRecipe ] = useState(initial);
   const dispatch = useDispatch();
 
@@ -23,12 +23,15 @@ const AddRecipe = () => {
     e.preventDefault();
 
     dispatch(addRecipe({...newRecipe, user_id: localStorage.getItem('id')}));
+    
+    setAddingRecipe(false)
 
     setNewRecipe(initial);
   }
 
   return (
     <form onSubmit={submitRecipe} className="recipe-form">
+      <button onClick={() => setAddingRecipe(false)} className="close">Close</button>
       <label>
         Title:
         <input
